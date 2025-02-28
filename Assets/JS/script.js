@@ -77,16 +77,16 @@ document.addEventListener("DOMContentLoaded", function () {
       category: "vegetables",
       img: "Assets/Images/potato-istockphoto-534781391-612x612.jpg",
     },
-    { name: "Milk", category: "dairy", img: "Assets/Images/milk-carton.jpg" },
+    { name: "Milk", category: "dairy", img: "Assets/Images/milk-natural.png" },
     { name: "Cheese", category: "dairy", img: "Assets/Images/cheese.jpg" },
     { name: "Rice", category: "grains", img: "Assets/Images/rice.jpg" },
-    { name: "Wheat", category: "grains", img: "Assets/Images/wheat.jpg" },
+    { name: "Wheat", category: "grains", img: "Assets/Images/wheat.jpeg" },
     {
       name: "Turmeric",
       category: "spices",
       img: "/Assets/Images/turmeric.jpg",
     },
-    { name: "Pepper", category: "spices", img: "/Assets/Images/pepper.jpg" },
+    { name: "Pepper", category: "spices", img: "/Assets/Images/pepper.png " },
   ];
 
   function displayProducts(category) {

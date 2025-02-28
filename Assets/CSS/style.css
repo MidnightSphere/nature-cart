@@ -14,6 +14,10 @@ body {
     color: #05b160;
 }
 
+/* .navbar-toggler{
+    margin-left: -16em;
+} */
+
 .nav-link.active,
 .navbar-brand:hover,
 .nav-link:hover {
@@ -26,7 +30,7 @@ body {
 
 .hero {
     position: relative;
-    background-image: url('../Images/Organic-Farming-1.jpg');
+    background-image: url('/Assets/Images/Organic-Farming-1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -98,7 +102,7 @@ body {
     width: 50%;
     height: 110px;
     margin: 0 auto;
-    border-radius: 50%;
+    border-radius: 30%;
     transition: transform 0.6s ease;
 }
 
@@ -154,9 +158,14 @@ body {
     transform: scale(1.05);
 }
 
-#about .icon img {
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2));
+#about .about-img{
+    max-width: 68%;
+    padding-bottom: 2em;
 }
+
+/* #about .icon img {
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2));
+} */
 
 #why-choose-us {
     background-color: #f0fdf4;
@@ -174,7 +183,7 @@ body {
 
 .delivery-img {
     max-width: 300px;
-    margin-bottom: -4.1em;
+    margin-bottom: -3em;
 }
 
 @media (max-width: 768px) {
