@@ -26,7 +26,7 @@ body {
 
 .hero {
     position: relative;
-    background-image: url(/Assets/Images/Organic-Farming-1.jpg);
+    background-image: url('../Images/Organic-Farming-1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
