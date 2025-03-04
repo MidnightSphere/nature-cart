@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Nature Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background: #f0fdf4;
+        }
+
+        .signup-container {
+            max-width: 450px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn-custom {
+            background: #05b160;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-custom:hover {
+            background: #048d4e;
+        }
+
+        .profile-img {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-img img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .btn-back {
+            background: #ccc;
+            color: black;
+            width: 55%;
+        }
+
+        .btn-back:hover {
+            background: #bbb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="signup-container">
+        <h3 class="text-center mb-3">Create an Account as Customer</h3>
+
+        <form id="signup-form" action="/signup-customer" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="profilePhoto" class="form-label">Profile Photo</label>
+                <input type="file" class="form-control" id="profilePhoto" name="profilePhoto" accept="image/*" required>
+            </div>
+            <div class="mb-3">
+                <label for="mobileNumber" class="form-label">Mobile Number</label>
+                <input type="tel" class="form-control" id="mobileNumber" name="phone" placeholder="Enter your mobile number"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>  
+            
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Enter your full address" required>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="pincode" class="form-label">Pincode</label>
+                    <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Enter your pincode" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+             {{#if error}}
+                 <div class="alert alert-danger">{{error}}</div>
+            {{/if}}
+
+            <button type="submit" class="btn btn-custom">Sign Up</button>
+        </form>
+
+        <p class="text-center mt-3">
+            Already have an account? <a href="/login-customer">Log in</a>
+        </p>
+        <button class="btn btn-back mt-3" onclick="window.location.href = '/'" >Go to Home Page</button>
+    </div>
+
+</body>
+
+</html>

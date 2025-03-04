@@ -1,0 +1,178 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Admin Panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="CSS/panelStyle.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="margin-left: 20px;">Nature Cart</a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">View as Customer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Your-products">Your Products</a></li>
+                    {{!-- <li class="nav-item"><a class="nav-link" href="#">Sales Analytics</a></li> --}}
+                    <li class="nav-item"><a class="nav-link" href="#order-history">Orders History</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+                </ul>
+            </div>
+                {{#if user}}
+                        <a href="#" id="profile-icon" data-bs-toggle="modal" data-bs-target="#profileUpdateModal">
+                            <img id="previewImage" src="{{user.profilePhoto}}" class="rounded-circle mb-3" width="40" height="40" alt="Profile Photo">
+                        </a>
+                        {{else}}        
+                            <a href="/role" class="nav-link">Login</a>
+                {{/if}}
+            
+        </div>
+    </nav>
+
+    <div id="f-profile" class="container mt-4">
+        <div class="row">
+            <div class="col-md-4 text-center mt-5">
+                <!-- Profile Picture -->
+                <img id="farmerProfileImage" src="{{user.profilePhoto}}" class="rounded-circle" width="200" height="200" alt="Farmer Profile">
+                <h4 id="farmeName">{{user.farmName}}</h4>
+                <p id="farmerMobile">{{user.phone}}</p>
+                <p id="farmerAddress">{{user.address}}</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-end mt-5">
+                <canvas id="salesChart" style="max-width: 220px; max-height: 220px;"></canvas>
+            </div>
+        </div>
+    </div>
+ <!-- Profile Details Modal -->
+<div class="modal fade" id="profileUpdateModal" tabindex="-1" aria-labelledby="profileUpdateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileUpdateModalLabel">Profile Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <!-- Profile Image -->
+                <img id="previewImage" src="{{user.profilePhoto}}" class="rounded-circle mb-3" width="120" height="120" alt="Profile Photo">
+
+                <!-- Profile Information in Single Line -->
+                <p class="mb-2"><strong>Farmer Name:</strong> <span id="farmerName">{{user.username}}</span></p>
+                <p class="mb-2"><strong>Farm Name:</strong> <span id="farmerFarmName">{{user.farmName}}</span></p>
+                <p class="mb-2"><strong>Mobile Number:</strong> <span id="editFarmerMobile">{{user.phone}}</span></p>
+                <p class="mb-2"><strong>Date of Birth:</strong> <span id="editFarmerDOB">{{user.dob}}</span></p>
+                <p class="mb-2"><strong>address:</strong> <span id="editFarmerAddress">{{user.address}}</span></p>
+                <p class="mb-2"><strong>City:</strong> <span id="farmerCity">{{user.city}}</span></p>
+                <p class="mb-2"><strong>Pincode:</strong> <span id="farmerPincode">{{user.pincode}}</span></p>
+            </div>
+            <div class="modal-footer">
+                <a href="/logout" class="btn btn-danger w-100">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4 ms-5" id="Your-products">
+    <h3>Your Products</h3>
+    <div class="row" id="productList">
+        <!-- Add Product Card -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <div class="card-body d-flex justify-content-center align-items-center text-center">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" >+ Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm" action="/add-product" enctype="multipart/form-data" method="POST">
+                    <div class="mb-3">
+                        <label for="categoryDropdown" class="form-label">Choose Category</label>
+                        <select id="categoryDropdown" class="form-control" name="category">
+                            <option value="">Select Category</option>
+                            <option value="Fruits">Fruits</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Grains">Grains</option>
+                            <option value="Spices">Spices</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productDropdown" class="form-label">Product Name</label>
+                        <select id="productDropdown" class="form-control" name="name" required>
+                            <option value="">Select Product</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between">
+                        <div>
+                            <label for="productPrice" class="form-label">Price (INR)</label>
+                            <input type="number" class="form-control" name="price" id="productPrice" required>
+                        </div>
+                        <div>
+                            <label for="productQuantity" class="form-label">Weight (Kg)</label>
+                            <input type="number" class="form-control" name="quantity" id="productQuantity" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productImage" class="form-label">Product Image</label>
+                        <input type="file" class="form-control" id="productImage" name="imageUrl" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+        <div class="mt-4 ms-5 " id="order-history">
+            <h3>Order History</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Tomatoes</td>
+                        <td>5 kg</td>
+                        <td>New York</td>
+                    </tr>
+                    <tr>
+                        <td>Hardik mack</td>
+                        <td>Patato</td>
+                        <td>2 kg</td>
+                        <td>Bhavnagar</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+    
+    <script src="JS/panelScript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

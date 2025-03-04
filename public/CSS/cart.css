@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CO:wght@100..400&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+}
+
+.navbar-brand {
+    font-family: "Playwrite CO";
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #05b160;
+}
+
+/* .navbar-toggler{
+    margin-left: -16em;
+} */
+
+.nav-link.active,
+.navbar-brand:hover,
+.nav-link:hover {
+    color: #02cc6e !important;
+}
+
+.nav-right {
+    margin-right: -4em;
+}
+
+.search{
+    padding-top: 15px;
+}
+
+.cart h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+.product-card{
+    width:fit-content;
+    height: 9em;
+}
+
+.product-card img{
+    width: 50%;
+    padding-left: 1em;
+}
+
+/* .img-fluid{
+    width: 50%;
+    height: 100%;
+} */
+
+.add-to-cart {
+    background: #ff9800;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cart-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.remove-btn {
+    background: white;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.remove-btn:hover{
+    background-color: white;
+}
+
+#checkout-btn {
+    background: #05b160;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#checkout-btn:hover{
+    background-color: #02cc6e;
+}
+
+.img-fluid{
+    padding-top: 1em;
+}
+
+.rightbtn{
+    padding-top: 1em;
+    padding-right: 3em;
+}

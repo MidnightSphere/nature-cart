@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Nature Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="CSS/allproducts.css">
+    <script>
+        function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+
+    function changeLanguage(lang) {
+        let translateElement = document.querySelector('.goog-te-combo');
+        if (translateElement) {
+            translateElement.value = lang;
+            translateElement.dispatchEvent(new Event('change'));
+        } else {
+            alert("Google Translate is not ready yet.");
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">Nature Cart</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#categories">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#contact-us">Contact</a></li>
+                </ul>
+                <form class="d-flex w-30">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <div class="d-flex align-items-center nav-right">
+                <div class="dropdown me-3">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                        data-bs-toggle="dropdown">
+                        Language
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('en')">English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('hi')">हिन्दी</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('gu')">ગુજરાતી</a></li>
+                    </ul>
+                </div>
+
+                {{#if user}}
+                        <a href="#" id="profile-icon" data-bs-toggle="modal" data-bs-target="#profileModal">
+                            <img id="previewImage" src="{{user.profilePhoto}}" class="rounded-circle" width="40" height="40" alt="Profile Photo">
+                        </a>
+                        {{else}}        
+                            <a href="/role" class="nav-link">Login</a>
+                    {{/if}}
+
+
+              <a class="nav-link" href="/cart">&nbsp;&nbsp;🛒 Cart <span id="cart-count">0</span></a>
+            </div>
+            <div id="google_translate_element" style="display: none;"></div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">User Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="previewImage" src="{{user.profilePhoto}}" class="rounded-circle mb-3" width="120" height="120" alt="Profile Photo">
+
+                    <p class="mb-2"><strong>UserName:</strong> <span id="farmerName">{{user.username}}</span></p>
+                    <p class="mb-2"><strong>Email</strong> <span id="farmerFarmName">{{user.email}}</span></p>
+                    <p class="mb-2"><strong>Mobile Number:</strong> <span id="editFarmerMobile">{{user.phone}}</span></p>
+                    <p class="mb-2"><strong>Date of Birth:</strong> <span id="editFarmerDOB">{{user.dob}}</span></p>
+                    <p class="mb-2"><strong>address:</strong> <span id="editFarmerAddress">{{user.address}}</span></p>
+                    <p class="mb-2"><strong>City:</strong> <span id="farmerCity">{{user.city}}</span></p>
+                    <p class="mb-2"><strong>Pincode:</strong> <span id="farmerPincode">{{user.pincode}}</span></p>
+                </div>
+                <div class="modal-footer">
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Product Categories</h2>
+                <select id="locationSelect" class="form-select w-auto">
+                    <option selected>Select Location</option>
+                    <option value="1">Ahmedabad</option>
+                    <option value="2">Surat</option>
+                    <option value="3">Vadodara</option>
+                </select>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn category-btn active btn-outline-success mx-1" data-category="all">All
+                    Categories</button>
+                <button class="btn category-btn btn-outline-success mx-1" data-category="fruits">Fruits</button>
+                <button class="btn category-btn btn-outline-success mx-1" data-category="vegetables">Vegetables</button>
+                <button class="btn category-btn btn-outline-success mx-1" data-category="dairy">Dairy</button>
+                <button class="btn category-btn btn-outline-success mx-1" data-category="grains">Grains</button>
+                <button class="btn category-btn btn-outline-success mx-1" data-category="spices">Spices</button>
+            </div>
+
+            <div class="row mt-4" id="product-container">
+                <!-- Products will be inserted here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-success text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Nature Cart</h5>
+                    <p>Connecting Natural Farmers & Conscious Consumers.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mt-2"><a href="/" class="text-white active">Home</a></li>
+                        <li class="mt-2"><a href="/#about" class="text-white">About Us</a></li>
+                        <li class="mt-2"><a href="#categories" class="text-white">Products</a></li>
+                        <li class="mt-2"><a href="/#contact-us" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Contact Us</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Bhavnagar, Gujarat, India</p>
+                    <p><i class="fas fa-phone-alt me-2"></i> +91 99044 16292</p>
+                    <p><i class="fas fa-envelope me-2"></i> support@naturecart.com</p>
+                </div>
+
+                <!-- Social Media -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Follow Us</h5>
+                    <div class="d-flex">
+                        <a href="https://www.facebook.com/login/" class="text-white me-3" target="_blank"><i
+                                class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://www.instagram.com/accounts/login/?source=auth_switcher" class="text-white me-3"
+                            target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://in.linkedin.com/?src=go-pa&trk=sem-ga_campid.14650114788_asid.151761418307_crid.657403558718_kw.linkedin%20login_d.c_tid.kwd-12704335873_n.g_mt.e_geo.9145712&mcid=6844056167778418689&cid=&gad_source=1&gclid=Cj0KCQiA2oW-BhC2ARIsADSIAWoGyrfoRmuHUUUDRafxrr9NhrGhacAoKjpGe4qbZz3J6mDfzQLzMyAaAsIxEALw_wcB&gclsrc=aw.ds"
+                            class="text-white me-3" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="text-center mt-4">
+            <p class="mb-0">© 2025 Nature Cart. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="js/allproducts.js"></script>
+</body>
+
+</html>

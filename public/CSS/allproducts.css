@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CO:wght@100..400&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+}
+
+
+.navbar-brand {
+    font-family: "Playwrite CO";
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #05b160;
+}
+
+/* .navbar-toggler{
+margin-left: -16em;
+} */
+
+.nav-link.active,
+.navbar-brand:hover,
+.nav-link:hover {
+    color: #02cc6e !important;
+}
+
+.nav-right {
+    margin-right: -4em;
+}
+
+#categories {
+    background-color: rgb(240 253 244);
+}
+
+#categories h2 {
+    color: #05b160;
+}
+
+#categories h2:hover {
+    color: #02cc6e;
+    cursor: pointer;
+}
+
+.category-btn {
+    background: transparent;
+    border: 0.5px solid #05b160;
+    color: #05b160;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.category-btn.active {
+    background: #05b160;
+    color: white;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding: 13px;
+    margin-top: 2em;
+}
+
+.image-container {
+    padding: 8px;
+}
+
+.card-img-top {
+    width: 50%;
+    height: 110px;
+    margin: 0 auto;
+    border-radius: 30%;
+    transition: transform 0.6s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+}
+
+.card .btn {
+    background-color: #05b160;
+    padding: 5px 9px;
+    border-radius: 0.3em;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-top: 1em;
+}
+
+#categories .btn i {
+    margin-left: 0.3rem;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+#categories .btn:hover i {
+    transform: translateX(5px);
+}
+
+#categories .card .btn:hover {
+    background-color: #02cc6e;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a.active {
+    color: #05b160;
+}

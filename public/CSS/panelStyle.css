@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CO:wght@100..400&display=swap');
+
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navbar Styling */
+
+.navbar-brand {
+    font-family: "Playwrite CO";
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #05b160;
+}
+
+
+.navbar {
+    background-color: #2d6a4f !important;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+.nav-link:hover {
+    color: #caff5f !important;
+}
+
+/* Profile Section */
+.rounded-circle {
+    border: 3px solid #2d6a4f;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+    font-weight: bold;
+    color: #2d6a4f;
+}
+
+.card-img-top {
+    width: 50%;
+    height: 110px;
+    margin: 0 auto;
+    border-radius: 20%;
+    transition: transform 0.6s ease;
+}
+
+
+/* Add Product Button */
+.btn-primary {
+    background-color: #40916c;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #2d6a4f;
+}
+
+/* Table Styling */
+.table {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+th {
+    background-color: #40916c;
+    color: white;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 10px;
+}
+.btn-close {
+    background-color: #e63946;
+}
+

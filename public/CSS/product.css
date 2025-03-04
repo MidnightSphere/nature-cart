@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CO:wght@100..400&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+}
+
+
+.navbar-brand {
+    font-family: "Playwrite CO";
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #05b160;
+}
+
+/* .navbar-toggler{
+    margin-left: -16em;
+} */
+
+.nav-link.active,
+.navbar-brand:hover,
+.nav-link:hover {
+    color: #02cc6e !important;
+}
+
+.nav-right {
+    margin-right: -4em;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding: 13px;
+    margin-top: 2em;
+}
+
+.image-container {
+    padding: 8px;
+}
+
+.card-img-top {
+    width: 50%;
+    height: 110px;
+    margin: 0 auto;
+    border-radius: 20%;
+    transition: transform 0.6s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+}
+
+.btn-add-to-cart {
+    background: #05b160;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.btn-add-to-cart:hover {
+    background: #028c4a;
+}
+
+
+.product-container {
+    padding: 20px;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a.active {
+    color: #05b160;
+}
